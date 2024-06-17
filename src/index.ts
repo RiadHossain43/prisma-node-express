@@ -60,6 +60,7 @@ async function main() {
           },
         });
       } catch (err: any) {
+        console.log(err.message)
         res.status(400).json({ message: err.message });
       }
     }
