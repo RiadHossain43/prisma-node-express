@@ -1,6 +1,7 @@
 import express, { Express, Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 import { PrismaClient } from "@prisma/client";
+import cors from 'cors';
 dotenv.config();
 const prisma = new PrismaClient();
 
@@ -37,6 +38,7 @@ function trackingBodyValidation(
 }
 
 async function main() {
+  app.use(cors());
   app.use(express.json());
 
   // Register API routes

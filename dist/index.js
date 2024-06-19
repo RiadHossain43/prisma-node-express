@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const client_1 = require("@prisma/client");
+const cors_1 = __importDefault(require("cors"));
 dotenv_1.default.config();
 const prisma = new client_1.PrismaClient();
 const app = (0, express_1.default)();
@@ -46,6 +47,7 @@ function trackingBodyValidation(req, res, next) {
 }
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
+        app.use((0, cors_1.default)());
         app.use(express_1.default.json());
         // Register API routes
         app.use("/api/v1/trackings", trackingBodyValidation, (req, res) => __awaiter(this, void 0, void 0, function* () {
